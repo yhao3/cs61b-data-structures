@@ -1,4 +1,4 @@
-package lists;
+package lists.intList;
 
 public class IntList {
     public int first;

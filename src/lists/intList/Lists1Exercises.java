@@ -1,4 +1,4 @@
-package lists.intList;
+package lists.intlist;
 public class Lists1Exercises {
   /** Returns an IntList identical to L, but with
     * each element incremented by x. L is not allowed

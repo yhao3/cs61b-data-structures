@@ -43,6 +43,18 @@ public class IntList {
         return this.rest.get(index - 1);
     }
 
+    @Override
+    public String toString() {
+		StringBuilder result = new StringBuilder("IntList: ");
+		IntList cur = this;
+		while (cur != null) {
+			result.append(cur.first);
+			result.append("\t");
+			cur = cur.rest;
+		}
+		return result.toString();
+	}
+
     public static void main(String[] args) {
         IntList list = new IntList(5, null);
         list.rest = new IntList(10, null);

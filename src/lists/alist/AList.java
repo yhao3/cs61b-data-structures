@@ -23,7 +23,8 @@ public class AList {
     /** Inserts X into the back of the list. */
     public void addLast(int x) {
         if (size == items.length) {
-            resize(size + RFACTOR);
+//          resize(size + RFACTOR);
+            resize(size * RFACTOR); 
         }
         items[size] = x;
         size++;

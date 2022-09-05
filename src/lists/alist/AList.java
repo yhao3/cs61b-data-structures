@@ -21,14 +21,25 @@ public class AList {
 
     /** Inserts X into the back of the list. */
     public void addLast(int x) {
+        if (size == items.length) {
+            resize(size + 1);
+        }
         items[size] = x;
         size++;
     }
-
+    
+    /** Resize the underlying array to the target capacity */
+    private void resize(int capacity) {
+        int[] arr = new int[capacity];
+        System.arraycopy(items, 0, arr, 0, size);
+        items = arr;
+    }
+        
     /** Returns the item from the back of the list. */
     public int getLast() {
         return items[size - 1];
     }
+
     /** Gets the ith item in the list (0 is the front). */
     public int get(int i) {
         return items[i];

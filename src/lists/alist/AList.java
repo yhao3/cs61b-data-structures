@@ -12,6 +12,7 @@ package lists.alist;
 public class AList {
     private int[] items;
     private int size;
+    private static final int RFACTOR = 2;
     
     /** Creates an empty list. */
     public AList() {
@@ -22,7 +23,7 @@ public class AList {
     /** Inserts X into the back of the list. */
     public void addLast(int x) {
         if (size == items.length) {
-            resize(size + 1);
+            resize(size + RFACTOR);
         }
         items[size] = x;
         size++;

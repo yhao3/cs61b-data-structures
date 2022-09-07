@@ -9,19 +9,19 @@ package lists.alist;
  * 3. The position of the last item in the list is always (size - 1).
  * </pre>
  */
-public class AList {
-    private int[] items;
+public class AList<T> {
+    private T[] items;
     private int size;
     private static final int RFACTOR = 2;
     
     /** Creates an empty list. */
     public AList() {
-        items = new int[100];
+        items = (T[]) new Object[100];
         size = 0;
     }
 
     /** Inserts X into the back of the list. */
-    public void addLast(int x) {
+    public void addLast(T x) {
         if (size == items.length) {
 //          resize(size + RFACTOR);
             resize(size * RFACTOR); 
@@ -32,18 +32,18 @@ public class AList {
     
     /** Resize the underlying array to the target capacity */
     private void resize(int capacity) {
-        int[] arr = new int[capacity];
+        T[] arr = (T[]) new Object[capacity];
         System.arraycopy(items, 0, arr, 0, size);
         items = arr;
     }
         
     /** Returns the item from the back of the list. */
-    public int getLast() {
+    public T getLast() {
         return items[size - 1];
     }
 
     /** Gets the ith item in the list (0 is the front). */
-    public int get(int i) {
+    public T get(int i) {
         return items[i];
     }
 
@@ -54,9 +54,9 @@ public class AList {
 
     /** Deletes item from back of the list and
       * returns deleted item. */
-    public int removeLast() {
-        int temp = items[size - 1];
-        items[size - 1] = 0; // Setting deleted item to zero is not necessary to preserve invariants, and thus not necessary for correctness.
+    public T removeLast() {
+        T temp = items[size - 1];
+        items[size - 1] = null; // null out any items that we "delete" to avoid "loitering"
         size--;
         return temp;
     }
